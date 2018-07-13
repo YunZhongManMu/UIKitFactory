@@ -22,10 +22,10 @@
 
 
 /** 类调用, 传入需要初始化的类对象 */
-@property (class, nonatomic, strong, readonly) Factory *(^typeClass)(Class);
+@property (class, nonatomic, readonly) Factory *(^typeClass)(Class);
 
 /** 专门为了初始化UIButton */
-@property (class, nonatomic, assign, readonly) Factory *(^buttonType)(UIButtonType);
+@property (class, nonatomic, readonly) Factory *(^buttonType)(UIButtonType);
 
 @end
 
