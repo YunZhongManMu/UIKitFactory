@@ -12,58 +12,61 @@
 @class Factory;
 @interface UIView (FactoryHelper)
 
-- (Factory *)factory;
+@property (nonatomic, weak, readonly) Factory *factory;
 
 @end
 
 @interface Factory : NSObject
 
-@property (nonatomic, strong) UIView *obj;
+@property (nonatomic, strong, readonly) UIView *obj;
+
 
 /** 类调用, 传入需要初始化的类对象 */
-+ (Factory *(^)(Class))typeClass;
+@property (class, nonatomic, strong, readonly) Factory *(^typeClass)(Class);
 
 /** 专门为了初始化UIButton */
-+ (Factory *(^)(UIButtonType))buttonType;
+@property (class, nonatomic, assign, readonly) Factory *(^buttonType)(UIButtonType);
 
 @end
 
 @interface Factory (UIViewHelper)
 
-- (Factory *(^)(UIView *))superView;
+@property (nonatomic, strong, readonly) Factory *(^superView)(UIView *);
 
-- (Factory *(^)(CGRect))frame;
-- (Factory *(^)(UIColor *))backgroundColor;
-- (Factory *(^)(NSInteger))tag;
-- (Factory *(^)(CGRect))bounds;
-- (Factory *(^)(CGFloat))alpha;
-- (Factory *(^)(CGPoint))center;
-- (Factory *(^)(CGAffineTransform))transform;
+@property (nonatomic, strong, readonly) Factory *(^frame)(CGRect);
+@property (nonatomic, strong, readonly) Factory *(^backgroundColor)(UIColor *);
+@property (nonatomic, strong, readonly) Factory *(^tag)(NSInteger);
+@property (nonatomic, strong, readonly) Factory *(^bounds)(CGRect);
+@property (nonatomic, strong, readonly) Factory *(^alpha)(CGFloat);
+@property (nonatomic, strong, readonly) Factory *(^center)(CGPoint);
+@property (nonatomic, strong, readonly) Factory *(^transform)(CGAffineTransform);
 
-- (Factory *(^)(BOOL))clipsToBounds;
+@property (nonatomic, strong, readonly) Factory *(^clipsToBounds)(BOOL);
 
-- (Factory *(^)(CGFloat))cornerRadius;
-- (Factory *(^)(BOOL))masksToBounds;
-- (Factory *(^)(UIColor *))borderColor;
-- (Factory *(^)(CGFloat))borderWidth;
+@property (nonatomic, strong, readonly) Factory *(^cornerRadius)(CGFloat);
+@property (nonatomic, strong, readonly) Factory *(^masksToBounds)(BOOL);
+@property (nonatomic, strong, readonly) Factory *(^borderColor)(UIColor *);
+@property (nonatomic, strong, readonly) Factory *(^borderWidth)(CGFloat);
 
-- (Factory *(^)(UIFont *))font;
-- (Factory *(^)(NSString *))text;
-- (Factory *(^)(NSAttributedString *))attributedText;
-- (Factory *(^)(UIColor *))textColor;
-- (Factory *(^)(NSTextAlignment))textAlignment;
 
-- (Factory *(^)(NSInteger))numberOfLines;
+@property (nonatomic, strong, readonly) Factory *(^font)(UIFont *);
+@property (nonatomic, strong, readonly) Factory *(^text)(NSString *);
+@property (nonatomic, strong, readonly) Factory *(^attributedText)(NSAttributedString *);
+@property (nonatomic, strong, readonly) Factory *(^textColor)(UIColor *);
+@property (nonatomic, strong, readonly) Factory *(^textAlignment)(NSTextAlignment);
 
-- (Factory *(^)(NSString *))placeholder;
-- (Factory *(^)(id))delegate;
+@property (nonatomic, strong, readonly) Factory *(^numberOfLines)(NSInteger);
 
-- (Factory *(^)(UIImage *))image;
+@property (nonatomic, strong, readonly) Factory *(^placeholder)(NSString *);
+@property (nonatomic, strong, readonly) Factory *(^delegate)(id);
 
-- (Factory *(^)(NSString *, UIControlState))setTitle;
-- (Factory *(^)(UIColor *, UIControlState))setTitleColor;
-- (Factory *(^)(UIImage *, UIControlState))setImage;
-- (Factory *(^)(UIImage *, UIControlState))setBackgroundImage;
-- (Factory *(^)(id, SEL, UIControlEvents))targetAndAction;
+@property (nonatomic, strong, readonly) Factory *(^image)(UIImage *);
+
+
+@property (nonatomic, strong, readonly) Factory *(^setTitle)(NSString *, UIControlState);
+@property (nonatomic, strong, readonly) Factory *(^setTitleColor)(UIColor *, UIControlState);
+@property (nonatomic, strong, readonly) Factory *(^setImage)(UIImage *, UIControlState);
+@property (nonatomic, strong, readonly) Factory *(^setBackgroundImage)(UIImage *, UIControlState);
+@property (nonatomic, strong, readonly) Factory *(^addTargetAndAction)(id, SEL, UIControlEvents);
 
 @end

@@ -30,7 +30,7 @@
     .borderWidth(5)
     .borderColor(UIColor.blueColor)
     .superView(self.view);
-
+    
     UILabel *label = [UILabel new];
     label.factory
     .frame(CGRectMake(100, 200, 100, 50))
@@ -50,7 +50,7 @@
     .font([UIFont systemFontOfSize:13])
     .setTitleColor(UIColor.redColor, UIControlStateNormal)
     .backgroundColor(UIColor.blueColor)
-    .targetAndAction(self, @selector(buttonClick:), UIControlEventTouchUpInside)
+    .addTargetAndAction(self, @selector(buttonClick:), UIControlEventTouchUpInside)
     .superView(self.view);
     
 
@@ -77,8 +77,9 @@
     .font([UIFont systemFontOfSize:13])
     .setTitleColor(UIColor.redColor, UIControlStateNormal)
     .backgroundColor(UIColor.blueColor)
-    .targetAndAction(self, @selector(buttonClick:), UIControlEventTouchUpInside)
+    .addTargetAndAction(self, @selector(buttonClick:), UIControlEventTouchUpInside)
     .superView(self.view);
+    
 }
 
 - (void)buttonClick:(UIButton *)button {

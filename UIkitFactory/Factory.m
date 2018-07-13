@@ -17,6 +17,8 @@
 
 @interface Factory ()
 
+@property (nonatomic, strong, readwrite) UIView *obj;
+
 @end
 
 @implementation UIView (FactoryHelper)
@@ -38,11 +40,12 @@
 + (Factory *(^)(Class))typeClass {
     return ^(Class cls){
         NSAssert([cls isSubclassOfClass:[UIView class]], @"初始化只用于UIView的子类");
-        
+
         UIView *obj = [cls new];
         return obj.factory;
     };
 }
+
 
 + (Factory *(^)(UIButtonType))buttonType {
     return ^(UIButtonType type){
@@ -322,7 +325,7 @@
     }
 }
 
-- (Factory *(^)(id, SEL, UIControlEvents))targetAndAction {
+- (Factory *(^)(id, SEL, UIControlEvents))addTargetAndAction {
     if ([self.obj isKindOfClass:[UIButton class]]) {
         
         return ((UIButton *)self.obj).f_targetAndAction;
